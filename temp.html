@@ -43,9 +43,6 @@
         }
     </style>
     <div id="app" class="container">
-        <button v-on:click="selectedPdfUrlId(1)">1</button>
-        <button v-on:click="selectedPdfUrlId(2)">2</button>
-        <button v-on:click="selectedPdfUrlId(3)">3</button>
         <div id="flipbookPDFContainer"></div>
     </div>
 
@@ -66,19 +63,20 @@
                 selectedPdfUrl: '',
             },
             created() {
-                localStorage.getItem('selectedAlbumUrl',1);
+                var item = localStorage.getItem('pdfId');
+                if (item == 1) {
+                    this.selectedPdfUrl = '/image/1.pdf';
+                }
+                else if (item == 2) {
+                    this.selectedPdfUrl = '/image/2.pdf';
+                }
+                else if (item == 3) {
+                    this.selectedPdfUrl = '/image/3.pdf';
+                }
+                this.selectedPdfUrlId();
             },
             methods: {
-                selectedPdfUrlId: function (item) {
-                    if (item == 1) {
-                        this.selectedPdfUrl = '/image/1.pdf';
-                    }
-                    else if (item == 2) {
-                        this.selectedPdfUrl = '/image/2.pdf';
-                    }
-                    else if (item == 3) {
-                        this.selectedPdfUrl = '/image/3.pdf';
-                    }
+                selectedPdfUrlId: function () {
                     setTimeout(() => {
                         var source_pdf = this.selectedPdfUrl;
                         if (this.index == 0) {
