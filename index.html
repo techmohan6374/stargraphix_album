@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Themify Icons CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css" rel="stylesheet">
+
+    <!-- Dearflip CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/css/dflip.min.css"
+        rel="stylesheet">
+</head>
+
+<body id="app">
+    <style>
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stargraphix-container {
+            position: fixed;
+            right: 50px;
+            top: 40px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .stargraphix-container img {
+            width: 55px;
+        }
+    </style>
+    <header>
+        <div class="stargraphix-container flex">
+            <a href="https://stargraphix.in/" class="flex" style="margin:0px;">
+                <img src="/image/STAR GRAPHIX LOGO.png" alt="">
+            </a>
+        </div>
+        <!-- <nav>
+            <a href="">Home</a>
+            <a href="">Contacts</a>
+            <a href="">Info</a>
+        </nav> -->
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="image/img1.jpg">
+                <div class="content">
+                    <div class="title">ஹரிணி</div>
+                    <div class="topic">மஞ்சள் நீராட்டு விழா</div>
+                    <div class="buttons">
+                        <button onclick="redirectUrl(1)">பார்க்கவும்</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/img2.jpg">
+                <div class="content">
+                    <div class="title">லாவண்யா</div>
+                    <div class="topic">மஞ்சள் நீராட்டு விழா</div>
+                    <div class="buttons">
+                        <button onclick="redirectUrl(2)">பார்க்கவும்</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/img3.jpg">
+                <div class="content">
+                    <div class="title">வைஷ்ணவி</div>
+                    <div class="topic">மஞ்சள் நீராட்டு விழா</div>
+                    <div class="buttons">
+                        <button onclick="redirectUrl(3)">பார்க்கவும்</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="image/img1.jpg">
+                <div class="content">
+                    <div class="title">
+                        ஹரிணி
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/img2.jpg">
+                <div class="content">
+                    <div class="title">
+                        லாவண்யா
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/img3.jpg">
+                <div class="content">
+                    <div class="title">
+                        வைஷ்ணவி
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- next prev -->
+
+        <div class="arrows">
+            <button id="prev" style="background-color: black;color:white;cursor: pointer;">&lt;</button>
+            <button id="next" style="background-color: black;color:white;cursor: pointer;">&gt;</button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+
+    <script src="app.js"></script>
+
+    <script>
+        function redirectUrl(id) {
+            localStorage.setItem("pdfId", id);
+            window.location.href = '';
+        }
+    </script>
+</body>
+
+</html>

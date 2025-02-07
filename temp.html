@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+
+    <!-- Themify Icons CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css" rel="stylesheet">
+
+    <!-- Dearflip CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/css/dflip.min.css"
+        rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(45deg, rgb(255, 5, 24) 0%, rgb(255, 5, 24) 20%, rgb(249, 54, 40) 20%, rgb(249, 54, 40) 40%, rgb(243, 103, 57) 40%, rgb(243, 103, 57) 60%, rgb(236, 152, 73) 60%, rgb(236, 152, 73) 80%, rgb(230, 201, 89) 80%, rgb(230, 201, 89) 100%);
+            padding-top: 120px;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ._df_book {
+            min-height: 100vh !important;
+        }
+    </style>
+    <div id="app" class="container">
+        <button v-on:click="selectedPdfUrlId(1)">1</button>
+        <button v-on:click="selectedPdfUrlId(2)">2</button>
+        <button v-on:click="selectedPdfUrlId(3)">3</button>
+        <div id="flipbookPDFContainer"></div>
+    </div>
+
+    <!-- Jquery JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- DearFlip JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/dflip.min.js"></script>
+
+    <!-- Vue JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                index: 0,
+                selectedPdfUrl: '',
+            },
+            created() {
+                localStorage.getItem('selectedAlbumUrl',1);
+            },
+            methods: {
+                selectedPdfUrlId: function (item) {
+                    if (item == 1) {
+                        this.selectedPdfUrl = '/image/1.pdf';
+                    }
+                    else if (item == 2) {
+                        this.selectedPdfUrl = '/image/2.pdf';
+                    }
+                    else if (item == 3) {
+                        this.selectedPdfUrl = '/image/3.pdf';
+                    }
+                    setTimeout(() => {
+                        var source_pdf = this.selectedPdfUrl;
+                        if (this.index == 0) {
+                            var option_pdf = { webgl: true, backgroundColor: "#e6c959" };
+                            $("#singleFlipBookViewer").css("background-color", "#e6c959");
+                        }
+                        var flipBook_pdf = $("#flipbookPDFContainer").flipBook(
+                            source_pdf,
+                            option_pdf
+                        );
+                    }, 2000);
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
